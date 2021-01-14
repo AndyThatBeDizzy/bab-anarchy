@@ -100,14 +100,17 @@ function scene.buildUI()
 
   for i,button in ipairs(buttons) do
     local width, height = button:getSize()
-
-    buttonPos[i] = {x = (i % 2 == 0) and love.graphics.getWidth() + width or -width, y = oy - height/2}
-    local mult = 1
-    if options then mult = 0.000001 end -- this is a stupid hack. whatever
-
-    tick.delay(function()
-      buttonTweens[i] = tween.new(0.8 * mult, buttonPos[i], {x = ox - width/2}, 'outCirc')
-    end, (i * 0.1 + 0.2) * mult)
+    
+    button:setPos(ox - width/2, oy - height/2)
+    if settings["menu_anim"] then
+      buttonPos[i] = {x = (i % 2 == 0) and love.graphics.getWidth() + width or -width, y = oy - height/2}
+      local mult = 1
+      if options then mult = 0.000001 end -- this is a stupid hack. whatever
+  
+      tick.delay(function()
+        buttonTweens[i] = tween.new(0.8 * mult, buttonPos[i], {x = ox - width/2}, 'outCirc')
+      end, (i * 0.1 + 0.2) * mult)
+    end
     oy = oy + height + 10
   end
 end
@@ -146,10 +149,12 @@ function scene.update(dt)
   for _,t in pairs(tweens) do
     if t.update then t:update(dt) end
   end
-
-  for i,button in ipairs(buttons) do
-    if buttonTweens[i] then buttonTweens[i]:update(dt) end
-    button:setPos(buttonPos[i].x, buttonPos[i].y)
+  
+  if settings["menu_anim"] then
+    for i,button in ipairs(buttons) do
+      if buttonTweens[i] then buttonTweens[i]:update(dt) end
+      button:setPos(buttonPos[i].x, buttonPos[i].y)
+    end
   end
 
   git_btn:setPos(tweens['git'].x, tweens['git'].y, sprites["ui/github"]:getHeight()+10, -sprites["ui/github"]:getHeight()-10, 1.2)
@@ -328,7 +333,11 @@ end
 
 function scene.keyPressed(key)
   if key == "escape" and options then
-    options = false
+    if global_menu_state ~= "none" then
+      global_menu_state = "none"
+    else
+      options = false
+    end
     scene.buildUI()
   end
 end

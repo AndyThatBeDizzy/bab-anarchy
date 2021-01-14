@@ -68,14 +68,6 @@
     "tags": ["idle"]
   },
   {
-    "name": "txt_looped",
-    "sprite": ["txt/infloop"],
-    "types": ["cond_prefix"],
-    "color": [[4, 1]],
-    "desc": "LOOPED (Prefix Condition): True if the level has been destroyed due to an infinite loop.",
-    "tags": ["infloop", "infinity", "infinite loop", "lvl", "level", "mse"]
-  },
-  {
     "name": "txt_sans",
     "sprite": ["txt/sans"],
     "sprite_transforms": {
@@ -376,7 +368,7 @@
     "name": "txt_offgrid",
     "sprite": ["txt/offgrid"],
     "types": ["cond_prefix"],
-    "color": [[5, 3]],
+    "color": [[5, 2]],
     "desc": "OFFGRID (PREFIX CONDITION): True if the unit is not exactly on a tile (Like from halfstep).",
     "tags": ["hal", "misaligned","missalined","missaligned"]
   }
