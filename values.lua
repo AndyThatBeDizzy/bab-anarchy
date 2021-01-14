@@ -196,7 +196,8 @@ colour_for_palette[6][4] = "blacc"
 anti_word_replacements = {
   stubbn = "shy...",
   ["shy..."] = "stubbn",
-  nogo = "icyyyy",
+  nogo = "yesgo",
+  yesgo = "nogo",
   goawaypls = "comepls",
   push = "comepls",
   comepls = "goawaypls",
@@ -252,6 +253,7 @@ anti_word_replacements = {
   snacc = "creat",
   liek = "haet",
   haet = "liek",
+  alow = "haet",
   lookat = "lookaway",
   lookaway = "lookat",
   corekt = "rong",
@@ -283,6 +285,7 @@ anti_verb_mirrors = {
   be = true,
   got = true,
   paint = true,
+  alow = true,
   rp = true,
 }
 
@@ -432,8 +435,8 @@ selector_grid_contents = {
   },
   -- page 7: properties, verbs and conditions
   {
-    "txt_be","txt_&","txt_got","txt_creat","txt_snacc","txt_spoop","txt_copkat","txt_moov","txt_yeet","txt_liek","txt_haet","txt_stalk","txt_ignor","txt_paint","txt_vs","txt_sing","txt_soko","txt_lookat",
-    "txt_u","txt_utoo","txt_utres","txt_y'all","txt_w","txt_:)","txt_noswim","txt_ouch","txt_protecc",0,"txt_nxt","txt_stayther","txt_wont","txt_giv",0,"txt_rp",0,"txt_lookaway",
+    "txt_be","txt_&","txt_got","txt_creat","txt_snacc","txt_spoop","txt_copkat","txt_moov","txt_yeet","txt_liek","txt_haet","txt_alow","txt_stalk","txt_ignor","txt_paint","txt_vs","txt_sing","txt_soko",
+    "txt_u","txt_utoo","txt_utres","txt_y'all","txt_w","txt_:)","txt_noswim","txt_ouch","txt_protecc",0,"txt_nxt","txt_stayther","txt_wont","txt_giv",0,"txt_rp","txt_lookat","txt_lookaway",
     "txt_go","txt_goooo","txt_icy","txt_icyyyy","txt_stubbn","txt_:(","txt_nedkee","txt_fordor","txt_wurd",0,"txt_infloop","txt_plsdont","txt_oob","txt_frenles","txt_timles","txt_lit","txt_corekt","txt_rong",
     "txt_nogo","txt_goawaypls","txt_comepls","txt_sidekik","txt_diagkik","txt_delet","txt_hotte","txt_fridgd","txt_thingify",0,"txt_looped","txt_curse","txt_alt","txt_clikt","txt_past","txt_wun","txt_an","txt_mayb",
     "txt_visitfren","txt_slep","txt_shy...","txt_behinu","txt_walk","txt_:o","txt_moar","txt_split","txt_txtify",0,"txt_dragbl","txt_nodrag",0,"txt_wait...","txt_samefloat","txt_samepaint","txt_sameface",0,
@@ -443,7 +446,7 @@ selector_grid_contents = {
     "txt_munwalk","txt_sidestep","txt_diagstep","txt_knightstep",0,"txt_tryagain","txt_noundo","txt_undo","txt_zawarudo","txt_brite","txt_torc","txt_tranparnt",0,"txt_bleu","txt_purp","txt_pinc","txt_whit","txt_graey",
     "txt_spin","txt_rotatbl","txt_noturn","txt_stukc",0,"txt_poortoll","txt_goarnd","txt_mirrarnd","txt_glued",0,0,0,0,0,"txt_rave","txt_colrful","txt_blacc","txt_brwn",
     "txt_upleft","txt_up","txt_upright","txt_thicc",0,"txt_her","txt_thr","txt_rithere","txt_the","txt_deez",0,0,0,0,"txt_stelth","txt_qt","txt_thonk","txt_cool",
-    "txt_left","txt_direction","txt_right",0,0,0,0,0,0,0,0,0,0,"txt_gay","txt_lesbab","txt_tranz","txt_ace","txt_aro",
+    "txt_left","txt_direction","txt_right","txt_yesgo",0,0,0,0,0,0,0,0,0,"txt_gay","txt_lesbab","txt_tranz","txt_ace","txt_aro",
     "txt_downleft","txt_down","txt_downright",0,0,"selctr","txt_selctr","txt_frens","txt_groop","txt_gang","txt_themself",0,0,"txt_pan","txt_bi","txt_enby","txt_fluid","txt_πoly",
     0,0,0,0,0,"lvl","txt_lvl","txt_txt","txt_no1","txt_every1","txt_every2","this","txt_mous",0,0,0,0,0,
     "txt_...","txt_''","txt_nt","txt_anti",0,"bordr","txt_bordr","lin","txt_lin","txt_lethers","txt_numa","txt_toen","txt_yuiy",0,0,0,0,0,

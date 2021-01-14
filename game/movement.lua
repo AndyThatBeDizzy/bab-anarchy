@@ -1924,6 +1924,9 @@ function canMove(unit,dx,dy,dir,o) --pushing, pulling, solid_name, reason, push_
     return false,{},{}
   end
   local success, movers, specials = canMoveCore(unit,dx,dy,dir,o)
+  if specials == "yesgo" then
+	return true, movers, {}
+  end
   if thicc_units[unit] then
     local old_x, old_y = unit.x, unit.y;
     local thicc = thicc_units[unit]
@@ -1978,19 +1981,6 @@ function canMove(unit,dx,dy,dir,o) --pushing, pulling, solid_name, reason, push_
 end
 
 function canMoveCore(unit,dx,dy,dir,o) --pushing, pulling, solid_name, reason, push_stack, start_x, start_y, ignorestukc
-
-  --if we haet outerlvl, we can't move, period. 
-  if rules_with["haet"] ~= nil and hasRule(unit, "haet", outerlvl) and not ignoreCheck(unit,outerlvl) then
-    return false,{},{}
-  end
-  
-  if rules_with["gomyway"] ~= nil and hasProperty(outerlvl,"gomyway") and ignoreCheck(unit,outerlvl) and goMyWayPrevents(outerlvl.dir,dx,dy) then
-    return false,{},{}
-  end
-  
-  if rules_with["anti gomyway"] ~= nil and hasProperty(outerlvl,"anti gomyway") and ignoreCheck(unit,outerlvl) and dir == outerlvl.dir then
-    return false,{},{}
-  end
 
   --prevent infinite push loops by returning false if a push intersects an already considered unit
   --EDIT: let's try returning true instead and allowing them to happen. plays nicely with portal loops. For stubborn, maybe we just allow max one direction change or something... (So we pass a flag along to know if we've made our one change or not.)
@@ -2064,6 +2054,27 @@ function canMoveCore(unit,dx,dy,dir,o) --pushing, pulling, solid_name, reason, p
   local movers = {}
   local specials = {}
   table.insert(movers, {unit = unit, dx = x-unit.x, dy = y-unit.y, dir = dir, move_dx = move_dx, move_dy = move_dy, move_dir = move_dir, geometry_spin = geometry_spin, portal = portal_unit})
+ 
+
+  
+  for _,v in ipairs(getUnitsOnTile(x, y, {checkmous = true})) do
+	if hasProperty(v,"yesgo") or hasRule(v, "alow", unit) then
+		return true, movers, {}
+	end
+  end
+  
+  --if we haet outerlvl, we can't move, period. 
+  if rules_with["haet"] ~= nil and hasRule(unit, "haet", outerlvl) and not ignoreCheck(unit,outerlvl) then
+    return false,{},{}
+  end
+  
+  if rules_with["gomyway"] ~= nil and hasProperty(outerlvl,"gomyway") and ignoreCheck(unit,outerlvl) and goMyWayPrevents(outerlvl.dir,dx,dy) then
+    return false,{},{}
+  end
+  
+  if rules_with["anti gomyway"] ~= nil and hasProperty(outerlvl,"anti gomyway") and ignoreCheck(unit,outerlvl) and dir == outerlvl.dir then
+    return false,{},{}
+  end
  
   if unit == outergaem then
     return true,movers,{}

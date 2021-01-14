@@ -720,6 +720,17 @@ function addRule(full_rule)
     object = anti_word_replacements[object:sub(6,-1)]
   end
   
+   if verb:starts("anti ") and anti_word_replacements[verb:sub(6,-1)] and anti_verb_mirrors[verb:sub(6,-1)] then
+	subject = rules.object.name
+    object = rules.subject.name
+    local old_object = copyTable(rules.object)
+    rules.object = copyTable(rules.subject)
+    rules.subject = old_object
+	
+    rules.verb.name = anti_word_replacements[verb:sub(6,-1)]
+    verb = anti_word_replacements[verb:sub(6,-1)]
+  end
+  
   if verb:starts("anti ") and anti_word_replacements[verb:sub(6,-1)] then
     rules.verb.name = anti_word_replacements[verb:sub(6,-1)]
     verb = anti_word_replacements[verb:sub(6,-1)]

@@ -78,8 +78,16 @@
     "sprite": ["txt/haet"],
     "types": ["verb_unit", "verb"],
     "color": [[2, 3]],
-    "desc": "HAET (Verb): A unit cannot stop onto a tile that has something it HAETs (treating it like NOGO). (x HAET LVL makes x unable to move.)\nAnti: liek",
+    "desc": "HAET (Verb): A unit cannot step onto a tile that has something it HAETs (treating it like NOGO). (x HAET LVL makes x unable to move.)\nAnti: liek",
     "tags": ["patashu", "hate", "hates", "collide"]
+  },
+ {
+    "name": "txt_alow",
+    "sprite": ["txt/alow"],
+    "types": ["verb_unit", "verb"],
+    "color": [[5, 2]],
+    "desc": "ALOW (Verb): A unit can step onto a tile that has something that ALOWs it (treating it like YESGO). \nAnti: mirrored haet",
+    "tags": ["allow", "allows"]
   },
   {
     "name": "txt_liek",

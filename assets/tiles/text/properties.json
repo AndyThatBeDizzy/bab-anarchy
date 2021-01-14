@@ -59,8 +59,17 @@
     "sprite": ["txt/nogo"],
     "types": ["property"],
     "color": [[5, 1]],
-    "desc": "NO GO: Can't be entered by objects. Overrides GO AWAY PLS!\nAnti: icyyyy",
+    "desc": "NO GO: Can't be entered by objects. Overrides GO AWAY PLS!\nAnti: yesgo",
     "tags": ["stop"]
+  },
+ {
+    "name": "txt_yesgo",
+    "display": "yes go",
+    "sprite": ["txt/yesgo"],
+    "types": ["property"],
+    "color": [[2, 1]],
+    "desc": "YES GO: Can always be entered by objects. Overrides GO AWAY PLS!\nAnti: nogo",
+    "tags": ["unstop"]
   },
   {
     "name": "txt_gomyway",
