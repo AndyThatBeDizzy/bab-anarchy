@@ -1,7 +1,7 @@
 # BAB ANARCHY
 Bab Anarchy is not the actual bab be u. For that, go to https://github.com/lilybeevee/bab-be-u
 
-This is a fan project started by ThePokemonkey123, and is not affilated with the actual bab be u or bab team.
+This is a fan project started by ThePokemonkey123, and may or may not be affilated with the actual bab be u or bab team.
 
 ## Playing Bab Anarchy
 Bab anarchy, like the real bab be u, is run with love2d. https://love2d.org/

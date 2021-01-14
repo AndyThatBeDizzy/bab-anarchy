@@ -1668,5 +1668,23 @@
     "types": ["object"],
     "color": [[0, 1]],
     "tags": ["chars", "balt", "baba", "belt"]
-  }
+  },
+  {
+    "name": "ba",
+    "sprite": ["ba"],
+    "layer": 11,
+    "color": [[0, 3]],
+    "rotate": true,
+    "desc": "o no! what happened to bab?",
+    "tags": ["chars", "baba"],
+    "pronouns": ["she", "her"]
+  },
+  {
+    "name": "txt_ba",
+    "sprite": ["txt/ba"],
+    "types": ["letter"],
+    "color": [[4, 1]],
+    "desc": "BA: a letter, for some reason",
+    "tags": ["chars", "baba"]
+  },
 ]
