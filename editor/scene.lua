@@ -119,7 +119,7 @@ function scene.load()
     state = "in editor",
     details = "making a neat new level",
     largeImageKey = "cover",
-    largeimageText = "bab be u",
+    largeimageText = "bab anarchy",
     smallImageKey = "edit",
     smallImageText = "editor",
     startTimestamp = now

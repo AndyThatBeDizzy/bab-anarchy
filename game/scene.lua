@@ -94,7 +94,7 @@ function scene.load()
     state = "ingame",
     details = "playing the gam",
     largeImageKey = "cover",
-    largeimageText = "bab be u",
+    largeimageText = "bab anarchy",
     smallImageKey = "icon",
     smallImageText = "bab",
     startTimestamp = now

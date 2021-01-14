@@ -84,7 +84,7 @@ function scene.buildUI()
     :setPos(10, love.graphics.getHeight()-sprites["ui/github"]:getHeight()-10)
     :setPivot(0.5, 0.5)
     :onPreDraw(function(o) ui.buttonFX(o, {rotate = false}) end)
-    :onReleased(function() love.system.openURL("https://github.com/lilybeevee/bab-be-u") end)
+    :onReleased(function() love.system.openURL("https://github.com/AndyThatBeDizzy/bab-anarchy") end)
 
   local ox, oy
   if not options then
@@ -243,13 +243,11 @@ function scene.draw(dt)
     elseif getTheme() == "halloween" then
       if not settings["flashing"] and (love.timer.getTime()%10 > 8.7 and love.timer.getTime()%10 < 8.8 or love.timer.getTime()%10 > 8.9 and love.timer.getTime()%10 < 9) then
         splashtext = "BAB IS DEAD"
-      elseif love.filesystem.read("author_name") == "lilybeevee" and splash > 0.5 then
-        splashtext = "happy spooky month lily!"
       else
         splashtext = "spooky month!"
       end
     elseif splash > 0.5 then
-      splashtext = "bab be u!"
+      splashtext = "bab anarchy!"
     else
       splashtext = "splosh txt!"
     end

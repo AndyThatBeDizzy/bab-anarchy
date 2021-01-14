@@ -37,7 +37,7 @@ function scene.load()
     state = "in "..(load_mode == "edit" and "editor" or "game"),
     details = "browsing levels. .......... . .. ...",
     largeImageKey = "cover",
-    largeimageText = "bab be u",
+    largeimageText = "bab anarchy",
     smallImageKey = load_mode == "edit" and "edit" or "icon",
     smallImageText = load_mode == "edit" and "editor" or "game",
     startTimestamp = now
