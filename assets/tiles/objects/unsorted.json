@@ -2913,5 +2913,22 @@
     "types": ["object"],
     "color": [[2, 4]],
     "tags": ["cheese"]
-  }
+  },
+  {
+    "name": "wulgaye",
+    "sprite": ["wulgaye","wulgaye_hat","wulgaye_face","wulgaye_mouth"],
+    "layer": 2,
+    "color": [[1, 1], [6, 2], [2,1], [5, 1]],
+    "voice": "amalgam",
+    "desc": "wal + skul + algay + fungye",
+    "tags": ["skalgus"],
+    "pronouns": ["they"]
+  },
+  {
+    "name": "txt_wulgaye",
+    "sprite": ["txt/wulgaye_wal", "txt/wulgaye_skul", "txt/wulgaye_algay", "txt/wulgaye_fungye"],
+    "types": ["object"],
+    "color": [[0, 1], [2, 1], [5, 1], [6, 2]],
+    "tags": ["skalgus"]
+  },
 ]
