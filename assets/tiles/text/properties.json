@@ -577,7 +577,8 @@
     "sprite": ["txt/haetskye"],
     "types": ["property"],
     "color": [[5, 3]],
-    "desc": "HAET SKYE: After movement, this unit falls DOWN as far as it can.\nAnti: haetflor",
+    "desc": "HAET SKYE: After movement, this unit falls DOWN as far as it can. Can be spelled liekflor.\nAnti: haetflor",
+    "alias": ["liekflor"],
     "tags": ["fall", "gravity"]
   },
   {
@@ -586,7 +587,8 @@
     "sprite": ["txt/haetflor"],
     "types": ["property"],
     "color": [[2, 2]],
-    "desc": "HAET FLOR: After movement, this unit falls UP as far as it can.\nAnti: haetskye",
+    "desc": "HAET FLOR: After movement, this unit falls UP as far as it can. Can be spelled liekskye.\nAnti: haetskye",
+    "alias": ["liekskye"],
     "tags": ["vall", "gravity"]
   },
   {
