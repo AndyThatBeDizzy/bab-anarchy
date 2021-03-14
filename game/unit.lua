@@ -1215,6 +1215,51 @@ function updateUnits(undoing, big_update)
       end
     end
     
+
+    local isshen = getUnitsWithEffect("neddor")
+    for _,unit in ipairs(isshen) do
+      local stuff = getUnitsOnTile(unit.x, unit.y, {not_destroyed = true, checkmous = true, thicc = thicc_units[unit]})
+      for _,on in ipairs(stuff) do
+        if hasProperty(on, "forkee") and sameFloat(unit, on) then
+          local ignore_unit = ignoreCheck(unit, on, "forkee")
+          local ignore_on = ignoreCheck(on, unit, "neddor")
+          if ignore_unit or ignore_on then
+            if timecheck(unit,"be","neddor") and timecheck(on,"be","forkee") then
+              if ignore_unit then
+                table.insert(to_destroy, unit)
+              end
+              if ignore_on then
+                table.insert(to_destroy, on)
+              end
+              playSound("break")
+              playSound("unlock")
+              shakeScreen(0.3, 0.1)
+            else
+              if ignore_unit then
+                table.insert(time_destroy,{unit.id,timeless})
+                addUndo({"time_destroy",unit.id})
+              end
+              if ignore_on then
+                table.insert(time_destroy,{on.id,timeless})
+                addUndo({"time_destroy",on.id})
+              end
+              table.insert(time_sfx,"break")
+              table.insert(time_sfx,"unlock")
+            end
+            if ignore_unit then
+              addParticles("destroy", unit.x, unit.y, getUnitColor(unit))
+            end
+            if ignore_on then
+              addParticles("destroy", on.x, on.y, getUnitColor(on))
+            end
+            --unlike other destruction effects, keys and doors pair off one-by-one
+            to_destroy = handleDels(to_destroy)
+            break
+          end
+        end
+      end
+    end
+    
     local issnacc = matchesRule(nil, "snacc", "?")
     for _,ruleparent in ipairs(issnacc) do
       local unit = ruleparent[2]
@@ -2390,6 +2435,54 @@ function levelBlock()
         end
         if lvlsafe then
           if ignoreCheck(unit,outerlvl,"fordor") then
+            table.insert(to_destroy, unit)
+            addParticles("destroy", unit.x, unit.y, getUnitColor(unit))
+          end
+        else return 0,0 end
+      end
+    end
+    if #to_destroy > 0 then
+      playSound("unlock",0.5)
+      playSound("break",0.5)
+    end
+  end
+
+  if hasProperty(outerlvl, "neddor") then
+    if hasProperty(outerlvl, "forkee") then
+      destroyLevel("unlock")
+      if not lvlsafe then return 0,0 end
+    end
+    local dors = getUnitsWithEffect("forkee")
+    for _,unit in ipairs(dors) do
+      if sameFloat(unit,outerlvl) and inBounds(unit.x,unit.y) then
+        if ignoreCheck(outerlvl,unit,"forkee") then
+          destroyLevel("unlock")
+        end
+        if lvlsafe then
+          if ignoreCheck(unit,outerlvl,"neddor") then
+            table.insert(to_destroy, unit)
+            addParticles("destroy", unit.x, unit.y, getUnitColor(unit))
+          end
+        else return 0,0 end
+      end
+    end
+    if #to_destroy > 0 then
+      playSound("unlock",0.5)
+      playSound("break",0.5)
+    end
+  end
+  
+  to_destroy = handleDels(to_destroy)
+  
+  if hasProperty(outerlvl, "forkee") then
+    local kees = getUnitsWithEffect("neddor")
+    for _,unit in ipairs(kees) do
+      if sameFloat(unit,outerlvl) and inBounds(unit.x,unit.y) then
+        if ignoreCheck(outerlvl,unit,"neddor") then
+          destroyLevel("unlock")
+        end
+        if lvlsafe then
+          if ignoreCheck(unit,outerlvl,"forkee") then
             table.insert(to_destroy, unit)
             addParticles("destroy", unit.x, unit.y, getUnitColor(unit))
           end
