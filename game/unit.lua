@@ -1214,7 +1214,6 @@ function updateUnits(undoing, big_update)
         end
       end
     end
-    
 
     local isshen = getUnitsWithEffect("neddor")
     for _,unit in ipairs(isshen) do
@@ -2446,7 +2445,7 @@ function levelBlock()
       playSound("break",0.5)
     end
   end
-
+  
   if hasProperty(outerlvl, "neddor") then
     if hasProperty(outerlvl, "forkee") then
       destroyLevel("unlock")
@@ -2964,6 +2963,22 @@ function convertUnits(pass)
     end
   end
 
+  local function removeRuleChain(rule, poof)
+    if removed_rule[rule] then return end
+    removed_rule[rule] = true
+    for _,unit in ipairs(rule.units) do
+      if not removed_rule_unit[unit] then
+        removed_rule_unit[unit] = true
+        table.insert(converted_units, unit)
+        local particle_colors = {4, 2}
+        addParticles("bonus", unit.x, unit.y, particle_colors)
+        for _,other_rule in ipairs(rules_with_unit[unit]) do
+          removeRuleChain(other_rule, poof)
+        end
+      end
+    end
+  end
+
   local pride_flags = {"gay", "tranz", "bi", "pan", "lesbab", "ace", "aro", "enby", "fluid", "πoly"}
   for _,pride in ipairs(pride_flags) do
     if rules_with["anti "..pride] then
@@ -2972,6 +2987,14 @@ function convertUnits(pass)
         removed_rule_unit = {}
         removeRuleChain(bad, pride)
       end
+    end
+  end
+
+  if rules_with["poof"] then
+    for _,bad in ipairs(rules_with["poof"]) do
+      removed_rule = {}
+      removed_rule_unit = {}
+      removeRuleChain(bad, poof)
     end
   end
   
