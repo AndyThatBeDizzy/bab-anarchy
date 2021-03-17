@@ -1087,4 +1087,11 @@
     "desc": "HAET HAET: what\nAnti: haethaet",
     "tags": ["fall", "rise", "gravity"]
   },
+  {
+    "name": "txt_poof",
+    "sprite": ["txt/poof"],
+    "types": ["property"],
+    "color": [[4, 2]],
+    "desc": "POOF: Deletes every active text near it when used in a rule. Anti: every pride flag (unimplimented)",
+  },
 ]
